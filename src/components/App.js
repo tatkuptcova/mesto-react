@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from './Header';
-import Main from './Main'
+import Main from './Main';
+import Footer from './Footer'
 import '../index.css';
 
 
@@ -9,12 +10,10 @@ function App() {
     <div className="page">
       <Header />
       <Main/>
-      
+      <Footer/>
 
       
-        <footer className="footer">
-          <p className="footer__copyright">&copy; 2021 Mesto</p>
-        </footer>
+       
 
         <section className="popup popup_profile">
           <div className="popup__content popup__content_profile">
