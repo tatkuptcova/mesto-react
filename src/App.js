@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from './logo.svg';
+import logo from './images/logo.svg';
 import '././index.css';
 
 
@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="page">
       <header className="header">
-            <img src="<%=require('./images/logo.svg')%>" alt="Лого" className="header__logo"/>
+            <img src={logo} alt="Лого" className="header__logo"/>
       </header>
 
       <main className="container">
