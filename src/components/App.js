@@ -1,7 +1,9 @@
 import React from 'react';
 import Header from './Header';
 import Main from './Main';
-import Footer from './Footer'
+import Footer from './Footer';
+import PopupWithForm from './PopupWithForm';
+import ImagePopup from './ImagePopup';
 import '../index.css';
 
 
@@ -25,6 +27,8 @@ function App() {
       <Header />
       <Main onEditProfile={handleEditProfileClick} onAddPlace={handleAddPlaceClick} onEditAvatar={handleEditAvatarClick}/>
       <Footer/>
+      <PopupWithForm name='delete' title='Вы уверены?' buttonText='Удалить'/>
+      <ImagePopup/>
 
         <section className="popup popup_profile">
           <div className="popup__content popup__content_profile">
@@ -122,13 +126,7 @@ function App() {
           </div>
         </section>
 
-        <section className="popup popup_pic">
-          <div className="popup__container">
-            <img className="popup__image" src="#" alt="#"/>
-            <button type="button" aria-label="Закрыть" className="button popup__close popup__close_image"></button>
-            <p className="popup__caption"></p>
-          </div>
-        </section>
+       
 
         <section className="popup popup_confirm">
           <div className="popup__content popup__content_confirm">
