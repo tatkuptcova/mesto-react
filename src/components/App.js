@@ -6,14 +6,25 @@ import '../index.css';
 
 
 function App() {
+
+  
+  const handleEditAvatarClick = () => {
+    document.querySelector('.popup_avatar').classList.add('popup_opened');
+  };
+
+  const handleEditProfileClick = () => {
+    document.querySelector('.popup_profile').classList.add('popup_opened');
+  };
+
+  const handleAddPlaceClick = () => {
+      document.querySelector('.popup_card').classList.add('popup_opened');
+  };
+
   return (
     <div className="page">
       <Header />
-      <Main/>
+      <Main onEditProfile={handleEditProfileClick} onAddPlace={handleAddPlaceClick} onEditAvatar={handleEditAvatarClick}/>
       <Footer/>
-
-      
-       
 
         <section className="popup popup_profile">
           <div className="popup__content popup__content_profile">
@@ -69,7 +80,6 @@ function App() {
               <span id="avatarLink-error" className="popup__input-error"></span> 
               <button type="submit" className="popup__button-submit popup__button-submit_avatar">Сохранить</button>
             </form>
-            
           </div>
         </section>
       

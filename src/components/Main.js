@@ -1,4 +1,7 @@
 function Main () {
+
+   
+
     return(
         <main className="container">
         <div className="content">
@@ -6,7 +9,7 @@ function Main () {
               <div className="profile__avatar">
                 <img 
                 className="profile__image" 
-                src="<%=require('./images/avatar.jpg')%>" 
+                src="" 
                 alt="Профиль фото"/>
               </div>
               <div className="profile__info">
