@@ -16,6 +16,7 @@ function App() {
     const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
     const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false);
     const [isImagePopupOpen, setIsImagePopupOpen] = React.useState(false);
+    const [selectedCard, setSelectedCard] = React.useState({});
     
     const handleEditAvatarClick = () => {
         setIsEditAvatarPopupOpen(true)
@@ -34,16 +35,30 @@ function App() {
         setIsEditAvatarPopupOpen(false);
         setIsEditProfilePopupOpen(false);
         setIsImagePopupOpen(false);
+        
     };
 
+    const handleCardClick = (card) => {
+      setIsImagePopupOpen(true);
+      setSelectedCard(card)
+    }
   
   return (
     <div className="page">
       <Header />
-      <Main onEditProfile={handleEditProfileClick} onAddPlace={handleAddPlaceClick} onEditAvatar={handleEditAvatarClick} />
+      <Main 
+        onEditProfile={handleEditProfileClick} 
+        onAddPlace={handleAddPlaceClick}
+        onEditAvatar={handleEditAvatarClick} 
+        onCardClick={handleCardClick}/>
       <Footer/>
       <PopupWithForm name='delete' title='Вы уверены?' buttonText='Удалить' onClose={closeAllPopups}/>
-      <ImagePopup isOpen={isImagePopupOpen} onClose={closeAllPopups} />
+      <ImagePopup 
+        isOpen={isImagePopupOpen} 
+        onClose={closeAllPopups} 
+        card={selectedCard} 
+        link={selectedCard.link} 
+        name={selectedCard.name}/>
       <PopupAddCard  isOpen={isAddPlacePopupOpen} onClose={closeAllPopups}/>
       <PopupEdit isOpen={isEditProfilePopupOpen} onClose={closeAllPopups}/> 
       <PopupEditAvatar isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups}/>
