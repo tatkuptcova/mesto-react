@@ -1,6 +1,6 @@
 import PopupWithForm from "./PopupWithForm";
 
-export default function PopupEdit(props) {
+function PopupEdit(props) {
     return(
         <PopupWithForm name="form-edit" title="Редактировать профиль" buttonText="Редактировать профиль" isOpen={props.isOpen} onClose={props.onClose}>
             <input
@@ -32,3 +32,5 @@ export default function PopupEdit(props) {
         </PopupWithForm>
     )
 }
+
+export default PopupEdit;

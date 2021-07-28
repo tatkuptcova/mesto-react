@@ -1,6 +1,6 @@
 import PopupWithForm from "./PopupWithForm";
 
-export default function PopupEditAvatar (props){
+function PopupEditAvatar (props){
     return (
         <PopupWithForm name="form-newAvatar" title="Обновить аватар" buttonText='Сохранить' isOpen={props.isOpen} onClose={props.onClose}>
             <input 
@@ -17,3 +17,5 @@ export default function PopupEditAvatar (props){
         </PopupWithForm>
     )
 }
+
+export default PopupEditAvatar;
