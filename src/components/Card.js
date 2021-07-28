@@ -1,15 +1,12 @@
 import basket from '../images/basket.svg';
-
+import React from 'react';
 
 function Card (props) {
 
-    const handleCardClick = () => {
-        props.onCardClick(props.card);
-    }
 
     return(
         <li class="elements__item">
-            <button type="button" aria-label="Удалить" class="button elements__button-delete" onClick={handleCardClick}>
+            <button type="button" aria-label="Удалить" class="button elements__button-delete">
                 <img src={basket} alt="Удалить"/>
             </button>
             <img class="elements__image" src={props.link} alt="#"/>
