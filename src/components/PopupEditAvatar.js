@@ -13,7 +13,7 @@ function PopupEditAvatar (props){
                 placeholder="Ссылка на картинку"
                 required
             />
-            <span id="avatarLink-error" className="popup__input-error"></span> 
+            <span id="avatarLink-error" className="popup__input-error"/> 
         </PopupWithForm>
     )
 }

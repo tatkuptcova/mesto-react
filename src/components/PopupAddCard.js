@@ -12,12 +12,12 @@ function PopupAddCard(props) {
           name="name"
           value=""
           placeholder="Название"
-          minlength="2"
-          maxlength="30"
+          minLength="2"
+          maxLength="30"
           pattern=".{2,30}"
           required
         />
-        <span id="nameplace-input-error" className="popup__input-error"></span>
+        <span id="nameplace-input-error" className="popup__input-error"/>
         <input
           type="url"
           id="link-input"
@@ -27,7 +27,7 @@ function PopupAddCard(props) {
           placeholder="Ссылка на картинку"
           required
         />
-        <span id="link-input-error" className="popup__input-error"></span>
+        <span id="link-input-error" className="popup__input-error"/>
     </PopupWithForm>        
   )
 }
