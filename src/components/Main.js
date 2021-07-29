@@ -28,7 +28,7 @@ import Card from "./Card";
         console.log(`Ошибка: ${err}`)
       })
 
-  })
+  }, [])
   
     return(
       <main className="container">
