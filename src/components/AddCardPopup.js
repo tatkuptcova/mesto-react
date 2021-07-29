@@ -1,6 +1,6 @@
 import PopupWithForm from "./PopupWithForm";
 
-function PopupAddCard(props) {
+function AddCardPopup(props) {
 
   return (
     <PopupWithForm  name="form-add"  title="Новое место" buttonText='Создать' isOpen={props.isOpen}
@@ -10,7 +10,6 @@ function PopupAddCard(props) {
           id="nameplace-input"
           className="popup__input popup__input_add-title"
           name="name"
-          value=""
           placeholder="Название"
           minLength="2"
           maxLength="30"
@@ -23,7 +22,6 @@ function PopupAddCard(props) {
           id="link-input"
           className="popup__input popup__input_add-link"
           name="link"
-          value=""
           placeholder="Ссылка на картинку"
           required
         />
@@ -31,4 +29,4 @@ function PopupAddCard(props) {
     </PopupWithForm>        
   )
 }
-export default PopupAddCard
+export default AddCardPopup;

@@ -1,11 +1,11 @@
 import PopupWithForm from "./PopupWithForm";
 
-function PopupEditAvatar (props){
+function EditAvatarPopup (props){
     return (
         <PopupWithForm name="form-newAvatar" title="Обновить аватар" buttonText='Сохранить' isOpen={props.isOpen} onClose={props.onClose}>
             <input 
                 id="avatarLink"
-                autocomplete="off"
+                autoComplete="off"
                 type="url"
                 name="avatarLink"
                 pattern="https?://.+"
@@ -18,4 +18,4 @@ function PopupEditAvatar (props){
     )
 }
 
-export default PopupEditAvatar;
+export default EditAvatarPopup;

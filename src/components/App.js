@@ -4,9 +4,9 @@ import Main from './Main';
 import Footer from './Footer';
 import PopupWithForm from './PopupWithForm';
 import ImagePopup from './ImagePopup';
-import PopupAddCard from './PopupAddCard';
-import PopupEdit from './PopupEdit';
-import PopupEditAvatar from './PopupEditAvatar';
+import AddCardPopup from './AddCardPopup';
+import EditProfilePopup from './EditProfilePopup';
+import EditAvatarPopup from './EditAvatarPopup';
 import '../index.css';
 
 
@@ -45,7 +45,7 @@ function App() {
   
   return (
     <div className="page">
-      <Header />
+      <Header/>
       <Main 
         onEditProfile={handleEditProfileClick} 
         onAddPlace={handleAddPlaceClick}
@@ -59,9 +59,9 @@ function App() {
         card={selectedCard} 
         link={selectedCard.link} 
         name={selectedCard.name}/>
-      <PopupAddCard  isOpen={isAddPlacePopupOpen} onClose={closeAllPopups}/>
-      <PopupEdit isOpen={isEditProfilePopupOpen} onClose={closeAllPopups}/> 
-      <PopupEditAvatar isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups}/>
+      <AddCardPopup  isOpen={isAddPlacePopupOpen} onClose={closeAllPopups}/>
+      <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups}/> 
+      <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups}/>
     </div>
   );
 }
