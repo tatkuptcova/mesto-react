@@ -45,7 +45,7 @@ import Card from "./Card";
                   <button onClick={props.onEditProfile} type="button" aria-label="Редактировать" className="button profile__edit-button"/>
                   <p id="profileAbout" className="profile__about">{userDescription}</p>
               </div>
-              <button onClick={props.onAddPlace}  type="button" aria-label="Добавить картинку" className="button profile__button-add"/>
+              <button onClick={props.onAddPlace} type="button" aria-label="Добавить картинку" className="button profile__button-add"/>
             </section>
 
             <section className="elements">
