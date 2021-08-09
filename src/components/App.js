@@ -55,6 +55,20 @@ function App() {
     setSelectedCard(card)
   }
   
+  React.useEffect(() => {
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeAllPopups();
+      }
+    })
+  },[])
+
+  function overlayClick(e) {
+      if (e.classList.contains('popup')){
+        closeAllPopups()
+      }
+  }
+  
   return (
     <div className="page">
       <CurrentUserContext.Provider value={currentUser}>
@@ -73,7 +87,7 @@ function App() {
           card={selectedCard} 
           link={selectedCard.link} 
           name={selectedCard.name}/>
-        <AddCardPopup  isOpen={isAddPlacePopupOpen} onClose={closeAllPopups}/>
+        <AddCardPopup  isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} overlay={overlayClick}/>
         <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups}/> 
         <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups}/>
         </CurrentUserContext.Provider>
