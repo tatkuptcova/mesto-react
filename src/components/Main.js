@@ -5,12 +5,12 @@ import { CurrentUserContext } from "../context/CurrentUserContext";
 
 function Main(props){
   const currentUser = React.useContext(CurrentUserContext); 
-  const [initialCards, setInitialCards] = React.useState([]);
+  const [cards, setCards] = React.useState([]);
 
   React.useEffect(() => {
     api.getInitialCards()
-      .then(res =>{
-        setInitialCards(res)
+      .then((cards) =>{
+        setCards(cards)
       })
       .catch(err => {
         console.log(`Ошибка: ${err}`)
@@ -22,16 +22,24 @@ function Main(props){
     const isLiked = card.likes.some(i => i._id === currentUser._id);
     api.changeLikeCardStatus(card._id, !isLiked)
         .then((newCard) => {
-          setInitialCards((state) => state.map((c) => c._id === card._id ? newCard : c));
+          const newCards = cards.map((c) => c._id === card._id ? newCard : c);
+          setCards(newCards);
         })
-        .catch(err => console.log(`Error: ${err}`));
+        .catch(err => {
+          console.log(`Ошибка: ${err}`)
+      })
   }
 
-  // function handleCardDelete(cardId) {
-  //   api.deleteCard(cardId)
-  //       .then(initialCards => setInitialCards(initialCards.filter(item => item._id !== cardId)))
-  //       .catch(err => console.log(`Error: ${err}`));
-  // }
+  function handleCardDelete(cardId) {
+    api.deleteCard(cardId)
+      .then(() => {
+        const newCards = cards.filter((c) => c._id !== cardId);
+        setCards(newCards);
+      })
+      .catch(err => {
+        console.log(`Ошибка: ${err}`)
+      })
+  }
 
     return(
       <main className="container">
@@ -53,7 +61,7 @@ function Main(props){
 
             <section className="elements">
               <ul className="elements__catalogue">
-                {initialCards.map((card) => (
+                {cards.map((card) => (
                     <Card
                     card={card}
                     key={card._id}
@@ -63,7 +71,7 @@ function Main(props){
                     onCardClick={props.onCardClick}
                     onDeleteClick={props.onDeleteClick}
                     onCardLike={handleCardLike}
-                    // onCardDelete={handleCardDelete}
+                    onCardDelete={handleCardDelete}
                     />
                 ))}
               </ul>
