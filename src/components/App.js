@@ -14,47 +14,46 @@ import api from '../utils/api';
 
 function App() {
 
-    const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(false);
-    const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
-    const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false);
-    const [isImagePopupOpen, setIsImagePopupOpen] = React.useState(false);
-    const [selectedCard, setSelectedCard] = React.useState({});
-    const [currentUser, setCurrentUser] = React.useState('');
+  const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(false);
+  const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
+  const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false);
+  const [isImagePopupOpen, setIsImagePopupOpen] = React.useState(false);
+  const [selectedCard, setSelectedCard] = React.useState({});
+  const [currentUser, setCurrentUser] = React.useState('');
     
-    React.useEffect(() => {
-      api.getUserInfo()
-        .then(user => {
-          setCurrentUser(user);
-        })
-        .catch(err => {
-          console.log (`Ошибка: ${err}`)
-        });
-    }, []);
+  React.useEffect(() => {
+    api.getUserInfo()
+      .then(user => {
+        setCurrentUser(user);
+      })
+      .catch(err => {
+        console.log (`Ошибка: ${err}`)
+      });
+  }, []);
 
-    const handleEditAvatarClick = () => {
-        setIsEditAvatarPopupOpen(true)
-    };
+  const handleEditAvatarClick = () => {
+    setIsEditAvatarPopupOpen(true)
+  };
 
-    const handleEditProfileClick = () => {
-        setIsEditProfilePopupOpen(true)
-    };
+  const handleEditProfileClick = () => {
+    setIsEditProfilePopupOpen(true)
+  };
 
-    const handleAddPlaceClick = () => {
-        setIsAddPlacePopupOpen(true)
-    };
+  const handleAddPlaceClick = () => {
+    setIsAddPlacePopupOpen(true)
+  };
 
-    const closeAllPopups = () => {
-        setIsAddPlacePopupOpen(false);
-        setIsEditAvatarPopupOpen(false);
-        setIsEditProfilePopupOpen(false);
-        setIsImagePopupOpen(false);
-        
-    };
+  const closeAllPopups = () => {
+    setIsAddPlacePopupOpen(false);
+    setIsEditAvatarPopupOpen(false);
+    setIsEditProfilePopupOpen(false);
+    setIsImagePopupOpen(false);
+  };
 
-    const handleCardClick = (card) => {
-      setIsImagePopupOpen(true);
-      setSelectedCard(card)
-    }
+  const handleCardClick = (card) => {
+    setIsImagePopupOpen(true);
+    setSelectedCard(card)
+  }
   
   return (
     <div className="page">
@@ -64,7 +63,8 @@ function App() {
           onEditProfile={handleEditProfileClick} 
           onAddPlace={handleAddPlaceClick}
           onEditAvatar={handleEditAvatarClick} 
-          onCardClick={handleCardClick}/>
+          onCardClick={handleCardClick}
+        />
         <Footer/>
         <PopupWithForm name='delete' title='Вы уверены?' buttonText='Удалить' onClose={closeAllPopups}/>
         <ImagePopup 
