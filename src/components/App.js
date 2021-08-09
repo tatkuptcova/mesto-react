@@ -79,7 +79,18 @@ function App() {
       console.log (`Ошибка: ${err}`)
     });
   }
-  
+
+  function handleUpdateAvatar(link) {
+    api.updateAvatar(link)
+    .then(user => {
+      setCurrentUser(user);
+      closeAllPopups();
+    })
+    .catch(err => {
+      console.log (`Ошибка: ${err}`)
+    });
+  }
+
   return (
     <div className="page">
       <CurrentUserContext.Provider value={currentUser}>
@@ -102,7 +113,7 @@ function App() {
         />
         <AddCardPopup  isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} overlay={overlayClick}/>
         <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} overlay={overlayClick} onUpdateUser={handleUpdateUser}/> 
-        <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} overlay={overlayClick}/>
+        <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} overlay={overlayClick} onUpdateAvatar={handleUpdateAvatar}/>
       </CurrentUserContext.Provider>
     </div>
   );
