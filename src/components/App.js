@@ -68,6 +68,17 @@ function App() {
         closeAllPopups()
       }
   }
+
+  function handleUpdateUser(name, about) {
+    api.changeUserInfo(name, about)
+    .then((user) => {
+      setCurrentUser(user)
+      closeAllPopups();
+    })
+    .catch(err => {
+      console.log (`Ошибка: ${err}`)
+    });
+  }
   
   return (
     <div className="page">
@@ -90,7 +101,7 @@ function App() {
           overlay={overlayClick}
         />
         <AddCardPopup  isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} overlay={overlayClick}/>
-        <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} overlay={overlayClick}/> 
+        <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} overlay={overlayClick} onUpdateUser={handleUpdateUser}/> 
         <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} overlay={overlayClick}/>
       </CurrentUserContext.Provider>
     </div>
