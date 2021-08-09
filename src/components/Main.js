@@ -33,7 +33,6 @@ function Main(props){
     api.deleteCard(cardId)
       .then(() => {
         setCards(cards.filter((c) => c._id !== cardId));
-       
       })
       .catch(err => {
         console.log(`Ошибка: ${err}`)

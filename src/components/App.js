@@ -54,7 +54,7 @@ function App() {
     setIsImagePopupOpen(true);
     setSelectedCard(card)
   }
-  
+
   React.useEffect(() => {
     window.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
@@ -80,17 +80,19 @@ function App() {
           onCardClick={handleCardClick}
         />
         <Footer/>
-        <PopupWithForm name='delete' title='Вы уверены?' buttonText='Удалить' onClose={closeAllPopups}/>
+        <PopupWithForm name='delete' title='Вы уверены?' buttonText='Удалить' onClose={closeAllPopups} overlay={overlayClick}/>
         <ImagePopup 
           isOpen={isImagePopupOpen} 
           onClose={closeAllPopups} 
           card={selectedCard} 
           link={selectedCard.link} 
-          name={selectedCard.name}/>
+          name={selectedCard.name}
+          overlay={overlayClick}
+        />
         <AddCardPopup  isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} overlay={overlayClick}/>
-        <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups}/> 
-        <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups}/>
-        </CurrentUserContext.Provider>
+        <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} overlay={overlayClick}/> 
+        <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} overlay={overlayClick}/>
+      </CurrentUserContext.Provider>
     </div>
   );
 }
