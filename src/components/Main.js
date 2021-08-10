@@ -59,17 +59,17 @@ function Main(props){
 
         <section className="elements">
           <ul className="elements__catalogue">
-            {cards.map((card) => (
-              <Card
-                card={card}
-                key={card._id}
-                link={card.link}
-                name={card.name}
-                likes={card.likes.length}
-                onCardClick={props.onCardClick}
-                onCardLike={handleCardLike}
-                onCardDelete={handleCardDelete}
-              />
+             {cards.map((card) => (
+            <Card
+              card={card}
+              key={card._id}
+              link={card.link}
+              name={card.name}
+              likes={card.likes.length}
+              onCardClick={props.onCardClick}
+              onCardLike={handleCardLike}
+              onCardDelete={handleCardDelete}
+            />
             ))}
           </ul>
         </section>
