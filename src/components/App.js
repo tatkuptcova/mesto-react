@@ -35,7 +35,7 @@ function App() {
 
   React.useEffect(() => {
     api.getInitialCards()
-      .then((res) =>{
+      .then(res =>{
         setCards(res)
       })
       .catch(err => {
@@ -60,10 +60,6 @@ function App() {
   const handleEditProfileClick = () => {
     setIsEditProfilePopupOpen(true)
   };
-
-  // const handleAddPlaceClick = () => {
-  //   setIsAddPlacePopupOpen(true)
-  // };
 
   const closeAllPopups = () => {
     setIsAddPlacePopupOpen(false);
@@ -140,8 +136,8 @@ function App() {
       <CurrentUserContext.Provider value={currentUser}>
         <Header/>
         <Main 
+          cards={cards}
           onEditProfile={handleEditProfileClick} 
-          // onAddPlace={handleAddPlaceClick}
           onEditAvatar={handleEditAvatarClick} 
           onCardClick={handleCardClick}
           onCardLike = {handleCardLike}
