@@ -2,7 +2,7 @@ import React from 'react';
 import {CurrentUserContext} from '../contexts/CurrentUserContext.js'
 import PopupWithForm from "./PopupWithForm";
 
-function EditProfilePopup(props) {
+function EditProfilePopup({isOpen, onClose, onUpdateUser}) {
         // Определяем переменные внутреннего состояния
         const [name, setName] = React.useState('');
         const [description, setDescription] = React.useState('');
@@ -26,12 +26,12 @@ function EditProfilePopup(props) {
       
         function handleSubmit(e) {
             e.preventDefault();
-            props.onUpdateUser(name, description);
+            onUpdateUser(name, description);
         }
     
 
     return(
-        <PopupWithForm name="form-edit" onSubmit={handleSubmit} title="Редактировать профиль" buttonText="Сохранить" isOpen={props.isOpen} onClose={props.onClose}>
+        <PopupWithForm name="form-edit" onSubmit={handleSubmit} title="Редактировать профиль" buttonText="Сохранить" isOpen={isOpen} onClose={onClose}>
             <input
                 type="text"
                 id="name-input"
