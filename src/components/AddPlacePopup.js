@@ -15,11 +15,16 @@ function AddPlacePopup({onAddPlace, isOpen, onClose}) {
   }
 
   function handleSubmit(e) {
-      e.preventDefault();
-      onAddPlace(place, link);
-      // setPlace('');
-      // setLink('');
+    e.preventDefault();
+    onAddPlace(place, link);
   }
+
+  React.useEffect(() => {
+    if (!isOpen) {
+      setPlace('');
+      setLink('');
+    }
+  }, [isOpen]);
 
   return (
     <PopupWithForm  name="form-add"  title="Новое место" buttonText='Создать' isOpen={isOpen}

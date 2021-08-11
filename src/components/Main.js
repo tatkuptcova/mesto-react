@@ -12,13 +12,13 @@ function Main({onEditAvatar, onEditProfile, onAddPlace, cards, onCardClick, onCa
           <div className="profile__avatar">
             <img onClick={onEditAvatar}
               className="profile__image" 
-              src={currentUser ? currentUser.avatar : null} 
+              src={currentUser.avatar} 
               alt="Профиль фото"/>
           </div>
           <div className="profile__info">
-            <h1 id="profileName" className="profile__name">{currentUser ? currentUser.name : null}</h1>
+            <h1 id="profileName" className="profile__name">{currentUser.name}</h1>
             <button onClick={onEditProfile} type="button" aria-label="Редактировать" className="button profile__edit-button"/>
-            <p id="profileAbout" className="profile__about">{currentUser ? currentUser.about : null}</p>
+            <p id="profileAbout" className="profile__about">{currentUser.about}</p>
           </div>
           <button onClick={onAddPlace} type="button" aria-label="Добавить картинку" className="button profile__button-add"/>
         </section>
