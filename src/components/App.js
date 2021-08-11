@@ -11,8 +11,6 @@ import EditAvatarPopup from './EditAvatarPopup';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 import '../index.css';
 
-
-
 function App() {
 
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(false);
@@ -21,8 +19,8 @@ function App() {
   const [isImagePopupOpen, setIsImagePopupOpen] = React.useState(false);
   const [selectedCard, setSelectedCard] = React.useState({});
   const [currentUser, setCurrentUser] = React.useState('');
-  const [cards, setCards] = React.useState([]);  
-
+  const [cards, setCards] = React.useState([]);
+ 
   React.useEffect(() => {
     api.getUserInfo()
       .then(user => {
@@ -30,7 +28,7 @@ function App() {
       })
       .catch(err => {
         console.log (`Ошибка: ${err}`)
-      });
+      })
   }, []);
 
   React.useEffect(() => {
@@ -83,12 +81,6 @@ function App() {
     })
   },[])
 
-  function overlayClick(e) {
-      if (e.classList.contains('popup')){
-        closeAllPopups()
-      }
-  }
-
   function handelAddPlace(){
     setIsAddPlacePopupOpen(true)
   }
@@ -101,7 +93,7 @@ function App() {
     })
     .catch(err => {
       console.log (`Ошибка: ${err}`)
-    });
+    })
   }
 
   function handleUpdateAvatar(link) {
@@ -112,7 +104,7 @@ function App() {
     })
     .catch(err => {
       console.log (`Ошибка: ${err}`)
-    });
+    })
   }
 
   function handleCardLike(card) {
@@ -151,18 +143,17 @@ function App() {
           onAddPlace={handelAddPlace}
         />
         <Footer/>
-        <PopupWithForm name='delete' title='Вы уверены?' buttonText='Удалить' onClose={closeAllPopups} overlay={overlayClick}/>
+        <PopupWithForm name='delete' title='Вы уверены?' buttonText='Удалить' onClose={closeAllPopups}/>
         <ImagePopup 
           isOpen={isImagePopupOpen} 
           onClose={closeAllPopups} 
           card={selectedCard} 
           link={selectedCard.link} 
           name={selectedCard.name}
-          overlay={overlayClick}
         />
-        <AddPlacePopup  isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} overlay={overlayClick} onAddPlace={handleAddPlace}/>
-        <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} overlay={overlayClick} onUpdateUser={handleUpdateUser}/> 
-        <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} overlay={overlayClick} onUpdateAvatar={handleUpdateAvatar}/>
+        <AddPlacePopup  isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} onAddPlace={handleAddPlace}/>
+        <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} onUpdateUser={handleUpdateUser}/> 
+        <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} onUpdateAvatar={handleUpdateAvatar}/>
       </CurrentUserContext.Provider>
     </div>
   );
