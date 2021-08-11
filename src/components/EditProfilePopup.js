@@ -10,8 +10,8 @@ function EditProfilePopup({isOpen, onClose, onUpdateUser}) {
         const currentUser = React.useContext(CurrentUserContext);
       
         React.useEffect(() => {
-          setName(currentUser ? currentUser.name : null);
-          setDescription(currentUser ? currentUser.about : null);
+          setName(currentUser.name);
+          setDescription(currentUser.about);
         }, [currentUser]);
       
         // Функция-обработчик изменения инпута имени обновляет стейт name
