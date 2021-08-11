@@ -5,10 +5,10 @@ import Main from './Main';
 import Footer from './Footer';
 import PopupWithForm from './PopupWithForm';
 import ImagePopup from './ImagePopup';
-import AddCardPopup from './AddCardPopup';
+import AddPlacePopup from './AddPlacePopup';
 import EditProfilePopup from './EditProfilePopup';
 import EditAvatarPopup from './EditAvatarPopup';
-import { CurrentUserContext } from '../context/CurrentUserContext';
+import { CurrentUserContext } from '../contexts/CurrentUserContext';
 import '../index.css';
 
 
@@ -160,7 +160,7 @@ function App() {
           name={selectedCard.name}
           overlay={overlayClick}
         />
-        <AddCardPopup  isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} overlay={overlayClick} onAddPlace={handleAddPlace}/>
+        <AddPlacePopup  isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} overlay={overlayClick} onAddPlace={handleAddPlace}/>
         <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} overlay={overlayClick} onUpdateUser={handleUpdateUser}/> 
         <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} overlay={overlayClick} onUpdateAvatar={handleUpdateAvatar}/>
       </CurrentUserContext.Provider>

@@ -1,6 +1,6 @@
 import React from 'react';
 import basket from '../images/basket.svg';
-import { CurrentUserContext } from '../context/CurrentUserContext';
+import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
 function Card (props) {
     
