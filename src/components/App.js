@@ -81,13 +81,7 @@ function App() {
         closeAllPopups();
       }
     })
-  },[])
-
-  function overlayClick(e) {
-      if (e.classList.contains('popup')){
-        closeAllPopups()
-      }
-  }
+  },[]);
 
   function handelAddPlace(){
     setIsAddPlacePopupOpen(true)
@@ -151,18 +145,17 @@ function App() {
           onAddPlace={handelAddPlace}
         />
         <Footer/>
-        <PopupWithForm name='delete' title='Вы уверены?' buttonText='Удалить' onClose={closeAllPopups} overlay={overlayClick}/>
+        <PopupWithForm name='delete' title='Вы уверены?' buttonText='Удалить' onClose={closeAllPopups}/>
         <ImagePopup 
           isOpen={isImagePopupOpen} 
           onClose={closeAllPopups} 
           card={selectedCard} 
           link={selectedCard.link} 
           name={selectedCard.name}
-          overlay={overlayClick}
         />
-        <AddPlacePopup  isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} overlay={overlayClick} onAddPlace={handleAddPlace}/>
-        <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} overlay={overlayClick} onUpdateUser={handleUpdateUser}/> 
-        <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} overlay={overlayClick} onUpdateAvatar={handleUpdateAvatar}/>
+        <AddPlacePopup  isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} onAddPlace={handleAddPlace}/>
+        <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} onUpdateUser={handleUpdateUser}/> 
+        <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} onUpdateAvatar={handleUpdateAvatar}/>
       </CurrentUserContext.Provider>
     </div>
   );

@@ -9,7 +9,7 @@ function EditAvatarPopup ({onUpdateAvatar, isOpen, onClose}){
     function handleSubmit(e) {
         e.preventDefault();
         onUpdateAvatar(ref.current.value);
-        ref.current.value = "";
+        // ref.current.value = "";
     }
 
     return (
