@@ -43,10 +43,11 @@ function App() {
     });
   }, []);
 
-  function handleAddPlaceSubmit(name, link) {
+  function handleAddPlace(name, link) {
     api.postNewCard(name, link)
      .then((res) => {
-      setCards([res, ...cards])
+      setCards([res, ...cards]);
+      closeAllPopups();
     })
     .catch(err => {
       console.log (`Ошибка: ${err}`)
@@ -66,6 +67,7 @@ function App() {
     setIsEditAvatarPopupOpen(false);
     setIsEditProfilePopupOpen(false);
     setIsImagePopupOpen(false);
+    setSelectedCard(false)
   };
 
   const handleCardClick = (card) => {
@@ -85,6 +87,10 @@ function App() {
       if (e.classList.contains('popup')){
         closeAllPopups()
       }
+  }
+
+  function handelAddPlace(){
+    setIsAddPlacePopupOpen(true)
   }
 
   function handleUpdateUser(name, about) {
@@ -140,8 +146,9 @@ function App() {
           onEditProfile={handleEditProfileClick} 
           onEditAvatar={handleEditAvatarClick} 
           onCardClick={handleCardClick}
-          onCardLike = {handleCardLike}
-          onCardDelete = {handleCardDelete}
+          onCardLike={handleCardLike}
+          onCardDelete={handleCardDelete}
+          onAddPlace={handelAddPlace}
         />
         <Footer/>
         <PopupWithForm name='delete' title='Вы уверены?' buttonText='Удалить' onClose={closeAllPopups} overlay={overlayClick}/>
@@ -153,7 +160,7 @@ function App() {
           name={selectedCard.name}
           overlay={overlayClick}
         />
-        <AddCardPopup  isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} overlay={overlayClick} onAddPlace={handleAddPlaceSubmit}/>
+        <AddCardPopup  isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} overlay={overlayClick} onAddPlace={handleAddPlace}/>
         <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} overlay={overlayClick} onUpdateUser={handleUpdateUser}/> 
         <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} overlay={overlayClick} onUpdateAvatar={handleUpdateAvatar}/>
       </CurrentUserContext.Provider>
